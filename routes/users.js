@@ -36,6 +36,8 @@ router.get('/admin-protected', userAuth, checkRole(['admin']), (req, res) => {
     })
 })
 
+router.post('/admin-protected/admin-add-service', userAuth, checkRole(['admin']), adminController.adminAddService)
+
 // Customer PROTECTED route
 router.get('/customer-protected', userAuth, checkRole(['customer']), (req, res) => {
     return res.status(200).send({
@@ -51,6 +53,8 @@ router.get('/seller-protected', userAuth, checkRole(['seller']), (req, res) => {
         user: req.user
     })
 })
+
+router.post('/seller-protected/seller-add-services', userAuth, checkRole(['seller']), sellerController.sellerAddServices)
 
 // Seller and Customer PROTECTED route
 router.get('/seller-customer-protected', userAuth, checkRole(['seller', 'customer']), async(req, res) => {
