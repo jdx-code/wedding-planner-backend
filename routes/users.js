@@ -3,6 +3,7 @@ const { userRegister, userLogin, userAuth, checkRole, serializeUser } = require(
 const adminController = require('../controllers/Auth/admin')
 const customerController = require('../controllers/Auth/customer')
 const sellerController = require('../controllers/Auth/seller')
+const upload = require('../middleware/media_upload/multer')
 
 // Admin registration route
 router.post('/register-admin', adminController.registerAdmin)
@@ -54,7 +55,7 @@ router.get('/seller-protected', userAuth, checkRole(['seller']), (req, res) => {
     })
 })
 
-router.post('/seller-protected/seller-new-service', userAuth, checkRole(['seller']), sellerController.sellerNewService)
+router.post('/seller-protected/seller-new-service', userAuth, checkRole(['seller']), upload.array("files", 5), sellerController.sellerNewService)
 
 // Seller and Customer PROTECTED route
 router.get('/seller-customer-protected', userAuth, checkRole(['seller', 'customer']), async(req, res) => {

@@ -2,12 +2,6 @@ const mongoose = require('mongoose')
 
 const SellerSchema = new mongoose.Schema(
     {
-        // services: [
-        //     {
-        //       type: mongoose.Schema.Types.ObjectId,
-        //       ref: 'Service', // Reference to the Service model
-        //     },
-        // ],
         service: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Service', // Reference to the Service model
@@ -16,8 +10,37 @@ const SellerSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User', // Reference to the User model
         },
-          
-        // Other fields specific to sellers
+        name: {
+            type: String,
+            required: true
+        },
+        about: {
+            type: String,            
+        },
+        pricePerHour: {
+            type: Number,
+            required: true
+        },
+        location: {
+            type: String,
+            required: true
+        },
+        contact: {
+            type: Number,
+            required: true
+        },        
+        rating: {
+            type: Number,            
+        },
+        comments: {
+            type: String,            
+        },
+        photos: {
+            type: Array,            
+        },  
+        cloudinary_ids: {
+            type: Array,
+        }        
     }, 
     { timestamps: true }
 )
