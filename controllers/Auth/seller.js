@@ -9,10 +9,10 @@ module.exports = {
         await userLogin(req.body, "seller", res)
     },
 
-    sellerAddServices : async(req, res) => {
+    sellerNewService : async(req, res) => {
         try {
             const newSeller = await Seller.create({
-                services: req.body.serviceIds,
+                service: req.body.serviceId,
                 user: req.body.userId,
             });
 

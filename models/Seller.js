@@ -2,12 +2,16 @@ const mongoose = require('mongoose')
 
 const SellerSchema = new mongoose.Schema(
     {
-        services: [
-            {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: 'Service', // Reference to the Service model
-            },
-        ],
+        // services: [
+        //     {
+        //       type: mongoose.Schema.Types.ObjectId,
+        //       ref: 'Service', // Reference to the Service model
+        //     },
+        // ],
+        service: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Service', // Reference to the Service model
+        },        
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User', // Reference to the User model

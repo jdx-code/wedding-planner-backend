@@ -54,7 +54,7 @@ router.get('/seller-protected', userAuth, checkRole(['seller']), (req, res) => {
     })
 })
 
-router.post('/seller-protected/seller-add-services', userAuth, checkRole(['seller']), sellerController.sellerAddServices)
+router.post('/seller-protected/seller-new-service', userAuth, checkRole(['seller']), sellerController.sellerNewService)
 
 // Seller and Customer PROTECTED route
 router.get('/seller-customer-protected', userAuth, checkRole(['seller', 'customer']), async(req, res) => {
