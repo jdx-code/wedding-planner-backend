@@ -2,7 +2,7 @@ const express = require('express')
 const connectDB = require('./config/database')
 const userRoutes = require('./routes/users')
 const passport = require('passport')
-
+const cors=require('cors');
 const app = express()
 
 require('dotenv').config({ path: './config/.env' })
@@ -10,6 +10,7 @@ connectDB()
 
 // Body Parser
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 app.use(express.json())
 
 app.use(passport.initialize())
