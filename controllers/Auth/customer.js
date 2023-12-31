@@ -6,5 +6,8 @@ module.exports = {
     },
     loginCustomer : async(req, res) => {
         await userLogin(req.body, "customer", res)
+    },
+    addFeedback : async(req, res) => {
+        console.log(`Feedback logic to be added here..`)
     }
 }

@@ -47,6 +47,8 @@ router.get('/customer-protected', userAuth, checkRole(['customer']), (req, res) 
     })
 })
 
+router.post('/customer-protected/addFeedback', userAuth, checkRole(['customer']), customerController.addFeedback)
+
 // Seller PROTECTED route
 router.get('/seller-protected', userAuth, checkRole(['seller']), (req, res) => {
     return res.status(200).send({
@@ -63,3 +65,4 @@ router.get('/seller-customer-protected', userAuth, checkRole(['seller', 'custome
 })
 
 module.exports = router
+
