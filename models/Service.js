@@ -10,6 +10,18 @@ const ServiceSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        feedback: [{
+            rating: {
+                type: Number,
+            },
+            comment: {
+                type: String,
+            },
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User', 
+            }
+        }],
     }, 
     { timestamps: true }
 )
