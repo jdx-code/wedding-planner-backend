@@ -1,4 +1,4 @@
-const Seller = require('../../models/Seller')
+const Service = require('../../models/Service')
 const { userRegister, userLogin } = require('../../utils/Auth')
 const cloudinary = require('../../middleware/media_upload/cloudinary')
 
@@ -25,22 +25,20 @@ module.exports = {
             const imageUrls = results.map((result) => result.secure_url)
             const cloudinary_ids = results.map((result) => result.public_id)
 
-            const newSeller = await Seller.create({
-                service: req.body.serviceId,
+            const newService = await Service.create({
+                category: req.body.categoryId,
                 user: req.body.userId,
                 name: req.body.name,
                 about: req.body.about,
                 pricePerHour: req.body.pricePerHour,
                 location: req.body.location,
-                contact: req.body.contact,
-                rating: req.body.rating,
-                comments: req.body.comments,
+                contact: req.body.contact,                
                 photos: imageUrls,
                 cloudinary_ids: cloudinary_ids,
             });
 
-            console.log('New seller created with services.');
-            res.status(200).json({ message: 'Seller and services added successfully', seller: newSeller });
+            console.log('New service added by seller.');
+            res.status(200).json({ message: 'Seller and services added successfully', seller: newService });
         } catch (err) {
             console.error(err)
         }

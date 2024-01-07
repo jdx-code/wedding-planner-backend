@@ -1,7 +1,8 @@
 const Service = require('../models/Service')
 
 module.exports = {
-    getProductsAndServices : async(req, res) => {
+    
+    getServices : async(req, res) => {
         try{            
             const results = await Service.find()
             res.status(200).json({ message: 'Fetching products and services..', results });
@@ -9,9 +10,20 @@ module.exports = {
             console.error(err)
         }
     },    
-    getProductAndServiceById : async(req, res) => {
+
+    getSellersByCategoryId : async(req, res) => {
         try{            
-            const results = await Service.findById(req.params.id)
+            console.log(req.params.categoryId)
+            const results = await Service.find({ category : req.params.categoryId })
+            res.status(200).json({ message: 'Fetching products and services by Seller..', results });
+        } catch (err) {
+            console.error(err)
+        }
+    },
+
+    getSellerDetailsBySellerId : async(req, res) => {
+        try{            
+            const results = await Seller.findById(req.params.sellerId)
             res.status(200).json({ message: 'Fetching products and services..', results });
         } catch (err) {
             console.error(err)
