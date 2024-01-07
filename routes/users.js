@@ -37,7 +37,7 @@ router.get('/admin-protected', userAuth, checkRole(['admin']), (req, res) => {
     })
 })
 
-router.post('/admin-protected/admin-add-service', userAuth, checkRole(['admin']), adminController.adminAddService)
+router.post('/admin-protected/admin-add-category', userAuth, checkRole(['admin']), adminController.adminAddCategory)
 
 // Customer PROTECTED route
 router.get('/customer-protected', userAuth, checkRole(['customer']), (req, res) => {
@@ -47,7 +47,7 @@ router.get('/customer-protected', userAuth, checkRole(['customer']), (req, res) 
     })
 })
 
-router.post('/customer-protected/addFeedback', userAuth, checkRole(['customer']), customerController.addFeedback)
+router.put('/customer-protected/addFeedback/:serviceId', userAuth, checkRole(['customer']), customerController.addFeedback)
 
 // Seller PROTECTED route
 router.get('/seller-protected', userAuth, checkRole(['seller']), (req, res) => {

@@ -2,7 +2,9 @@ const router = require("express").Router()
 const guestController = require('../controllers/guest')
 
 // Other routes
-router.get('/products-and-services', guestController.getProductsAndServices)
-router.get('/product-and-service/:id', guestController.getProductAndServiceById)
+router.get('/services', guestController.getServices)
+router.get('/sellers-by-category/:categoryId', guestController.getSellersByCategoryId)
+
+router.get('/seller-details/:sellerId', guestController.getSellerDetailsBySellerId)
 
 module.exports = router
