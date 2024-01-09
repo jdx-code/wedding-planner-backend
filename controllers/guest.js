@@ -1,6 +1,16 @@
+const Category = require('../models/Category')
 const Service = require('../models/Service')
 
 module.exports = {
+
+    getCategories : async(req, res) => {
+        try{            
+            const results = await Category.find()
+            res.status(200).json({ message: 'Fetching categories info..', results });
+        } catch (err) {
+            console.error(err)
+        }
+    },   
     
     getServices : async(req, res) => {
         try{            
