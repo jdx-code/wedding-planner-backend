@@ -21,9 +21,9 @@ module.exports = {
         }
     },
 
-    getSellerDetailsBySellerId : async(req, res) => {
+    getServiceDetailsByServiceId : async(req, res) => {
         try{            
-            const results = await Seller.findById(req.params.sellerId)
+            const results = await Service.findById(req.params.serviceId)
             res.status(200).json({ message: 'Fetching products and services..', results });
         } catch (err) {
             console.error(err)
